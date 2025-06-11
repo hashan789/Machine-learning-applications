@@ -12,12 +12,19 @@ target = np.where(Group =='C',1,0) # if Group =='C' 'C' = 1 otherwise 'H' = 0
 random.seed(915)
 model = Sequential() # intialize the neural network
 model.add(Input(shape=(1,)))
+model.add(Dense(2,activation='sigmoid')) # add a hidden layer
 model.add(Dense(1,activation='sigmoid'))
 
 model.compile(optimizer=Adam(learning_rate=0.1),loss='binary_crossentropy') # generate weights and biases for inputs
 model.get_weights() # [weights,biases]
 
 model.fit(PSA,target,epochs=1000,verbose=1)
+
+plt.plot(History.epoch,History.history['loss'],label='Training loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
 
 input = np.array([2.5])
 model.predict(input,verbose=0)
