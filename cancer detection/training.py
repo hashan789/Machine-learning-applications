@@ -18,7 +18,7 @@ model.add(Dense(1,activation='sigmoid'))
 model.compile(optimizer=Adam(learning_rate=0.1),loss='binary_crossentropy') # generate weights and biases for inputs
 model.get_weights() # [weights,biases]
 
-model.fit(PSA,target,epochs=1000,verbose=1)
+History = model.fit(PSA,target,epochs=1000,verbose=1)
 
 plt.plot(History.epoch,History.history['loss'],label='Training loss')
 plt.xlabel('Epochs')
